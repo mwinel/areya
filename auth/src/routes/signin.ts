@@ -1,7 +1,7 @@
 import express, { Request, Response } from "express";
 import { body } from "express-validator";
 import jwt from "jsonwebtoken";
-import { validateRequest, BadRequestError } from "@mwineltickets/common";
+import { validateRequest, BadRequestError } from "@areya/common";
 
 import { User } from "../models/user";
 import { Password } from "../services/password";

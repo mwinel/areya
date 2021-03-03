@@ -2,7 +2,7 @@ import express from "express";
 import "express-async-errors";
 import { json } from "body-parser";
 import cookieSession from "cookie-session";
-import { errorHandler, NotFoundError } from "@mwineltickets/common";
+import { errorHandler, NotFoundError } from "@areya/common";
 
 import { currentUserRouter } from "./routes/current-user";
 import { signUpRouter } from "./routes/signup";

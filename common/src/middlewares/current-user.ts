@@ -4,7 +4,10 @@ import jwt from "jsonwebtoken";
 // Interface that describes the properties of a User Payload.
 interface UserPayload {
   id: string;
+  firstName: string;
+  lastName: string;
   email: string;
+  role: string;
 }
 
 declare global {
