@@ -1,0 +1,38 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: hospitals-depl
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: hospitals
+  template:
+    metadata:
+      labels:
+        app: hospitals
+    spec:
+      containers:
+        - name: hospitals
+          image: us.gcr.io/areya-dev-289418/hospitals
+          env:
+            - name: MONGO_URI
+              value: 'mongodb://hospitals-mongo-srv:27017/hospitals'
+            - name: JWT_KEY
+              valueFrom:
+                secretKeyRef:
+                  name: jwt-secret
+                  key: JWT_KEY
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: hospitals-srv
+spec:
+  selector:
+    app: hospitals
+  ports:
+    - name: hospitals
+      protocol: TCP
+      port: 3000
+      targetPort: 3000
