@@ -8,9 +8,9 @@ build:
   # local:
   #   push: false
   googleCloudBuild:
-    projectId: ticketing-dev-289418
+    projectId: areya-dev-289418
   artifacts:
-    - image: us.gcr.io/ticketing-dev-289418/auth
+    - image: us.gcr.io/areya-dev-289418/auth
       context: auth
       docker:
         dockerfile: Dockerfile
@@ -18,7 +18,7 @@ build:
         manual:
           - src: 'src/**/*.ts'
             dest: .
-    - image: us.gcr.io/ticketing-dev-289418/client
+    - image: us.gcr.io/areya-dev-289418/client
       context: client
       docker:
         dockerfile: Dockerfile
@@ -26,7 +26,7 @@ build:
         manual:
           - src: '**/*.ts'
             dest: .
-    - image: us.gcr.io/ticketing-dev-289418/tickets
+    - image: us.gcr.io/areya-dev-289418/tickets
       context: hospitals
       docker:
         dockerfile: Dockerfile
