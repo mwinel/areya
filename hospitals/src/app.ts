@@ -6,7 +6,7 @@ import {
   errorHandler,
   NotFoundError,
   currentUser,
-} from "@mwineltickets/common";
+} from "@areya/common";
 
 import { createHospitalRouter } from "./routes/create-hospital";
 import { retrieveHospitalRouter } from "./routes/retrieve-hospital";

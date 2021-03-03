@@ -1,6 +1,6 @@
 import express, { Request, Response } from "express";
 import { body } from "express-validator";
-import { requireAuth, validateRequest } from "@mwineltickets/common";
+import { requireAuth, validateRequest } from "@areya/common";
 
 import { Hospital } from "../models/hospital";
 

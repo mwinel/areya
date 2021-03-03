@@ -5,7 +5,7 @@ import {
   NotFoundError,
   NotAuthorizedError,
   requireAuth,
-} from "@mwineltickets/common";
+} from "@areya/common";
 
 import { Hospital } from "../models/hospital";
 
