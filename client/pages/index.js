@@ -7,7 +7,7 @@ const LandingPage = ({ currentUser }) => {
     </div>
   ) : (
     <div className="alert alert-danger" role="alert">
-      You are not signed in.
+      You are not signed in...::
     </div>
   );
 };
