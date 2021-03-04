@@ -5,7 +5,7 @@ import { app } from "./app";
 // Connect to a MongoDB instance.
 // Listen to port 3000.
 const start = async () => {
-  console.log('Starting...')
+  console.log('Starting.....')
   if (!process.env.JWT_KEY) {
     throw new Error("JWT_KEY must be defined.");
   }
