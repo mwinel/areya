@@ -27,6 +27,6 @@ jobs:
       with:
         token: ${{ secrets.DIGITAL_OCEAN_ACCESS_TOKEN }}  
     - name: Configure Kubernetes Clusters
-      run: doctl kubernetes cluster kubeconfig save amari-dmts
+      run: doctl kubernetes cluster kubeconfig save areya-k8s-cluster
     - name: Restart Deployment
       run: kubectl rollout restart deployment auth-depl

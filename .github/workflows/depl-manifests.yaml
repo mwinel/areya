@@ -18,6 +18,6 @@ jobs:
       with:
         token: ${{ secrets.DIGITAL_OCEAN_ACCESS_TOKEN }}  
     - name: Configure Kubernetes Clusters
-      run: doctl kubernetes cluster kubeconfig save areya
+      run: doctl kubernetes cluster kubeconfig save areya-k8s-cluster
     - name: Apply K8s infra
       run: kubectl apply -f infra/k8s 
