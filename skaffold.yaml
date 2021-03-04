@@ -5,12 +5,12 @@ deploy:
     manifests:
       - ./infra/k8s/*
 build:
-  # local:
-  #   push: false
-  googleCloudBuild:
-    projectId: areya-dev-289418
+  local:
+    push: false
+  # googleCloudBuild:
+  #   projectId: areya-dev-289418
   artifacts:
-    - image: us.gcr.io/areya-dev-289418/auth
+    - image: mwinel/auth
       context: auth
       docker:
         dockerfile: Dockerfile
@@ -18,7 +18,7 @@ build:
         manual:
           - src: 'src/**/*.ts'
             dest: .
-    - image: us.gcr.io/areya-dev-289418/client
+    - image: mwinel/client
       context: client
       docker:
         dockerfile: Dockerfile
@@ -26,7 +26,7 @@ build:
         manual:
           - src: '**/*.ts'
             dest: .
-    - image: us.gcr.io/areya-dev-289418/tickets
+    - image: mwinel/tickets
       context: hospitals
       docker:
         dockerfile: Dockerfile
