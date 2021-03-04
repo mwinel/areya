@@ -7,8 +7,11 @@ const buildClient = ({ req }) => {
       // baseURL format = 'http://SERVICE_NAME.NAMESPACE.svc.cluster.local'.
       // Run `kubectl get services -n ingress-nginx` to get SERVICE_NAME.
       // Run `kubectl get namespace` to get NAMESPACE.
-      baseURL:
-        "http://ingress-nginx-controller.ingress-nginx.svc.cluster.local",
+      // baseURL:
+      //   "http://ingress-nginx-controller.ingress-nginx.svc.cluster.local",
+
+      // baseURL: digitalocean
+      baseUrl: 'http://www.areya-demo.xyz/',
       headers: req.headers,
     });
   } else {
