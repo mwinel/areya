@@ -1,0 +1,32 @@
+name: Deploy Client
+
+on:
+  push:
+    branches: [ main ]
+    paths: 
+      - 'client/**'
+
+jobs:
+
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2
+    - name: Build the Docker image
+      run: cd client && docker build -t mwinel/client .
+    - name: Login to Docker
+      run: docker login -u $DOCKER_USERNAME -p $DOCKER_PASSWORD
+      env:
+        DOCKER_USERNAME: ${{ secrets.DOCKER_USERNAME }}
+        DOCKER_PASSWORD: ${{ secrets.DOCKER_PASSWORD }} 
+    - name: Push Docker Image 
+      run: docker push mwinel/client
+    - uses: digitalocean/action-doctl@v2
+      with:
+        token: ${{ secrets.DIGITAL_OCEAN_ACCESS_TOKEN }}  
+    - name: Configure Kubernetes Clusters
+      run: doctl kubernetes cluster kubeconfig save amari-dmts
+    - name: Restart Deployment
+      run: kubectl rollout restart deployment client-depl
