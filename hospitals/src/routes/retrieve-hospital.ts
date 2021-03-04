@@ -1,5 +1,5 @@
 import express, { Request, Response } from "express";
-import { NotFoundError } from "@areya/common";
+import { NotFoundError } from "@areya/common"; 
 
 import { Hospital } from "../models/hospital";
 
