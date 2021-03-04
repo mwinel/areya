@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
         - name: hospitals
-          image: us.gcr.io/areya-dev-289418/hospitals
+          image: mwinel/hospitals
           env:
             - name: MONGO_URI
               value: 'mongodb://hospitals-mongo-srv:27017/hospitals'

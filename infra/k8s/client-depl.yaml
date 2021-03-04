@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
         - name: client
-          image: us.gcr.io/areya-dev-289418/client
+          image: mwinel/client
 ---
 apiVersion: v1
 kind: Service
