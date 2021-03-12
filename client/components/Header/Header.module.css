@@ -1,0 +1,19 @@
+.bg {
+  @apply bg-gray-50 overflow-hidden rounded-lg
+}
+
+.card {
+  @apply px-4 py-4 sm:p-6 text-left
+}
+
+.title {
+  @apply text-2xl text-gray-800 font-bold mb-3
+}
+
+.description {
+  @apply text-xl text-gray-700
+}
+
+.bg:hover {
+  @apply bg-indigo-200 cursor-pointer
+}

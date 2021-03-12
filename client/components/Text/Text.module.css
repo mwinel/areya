@@ -1,0 +1,20 @@
+.body {
+  @apply max-w-6xl mx-auto text-sm;
+}
+
+.small {
+  @apply max-w-6xl mx-auto text-sm;
+}
+
+
+.heading {
+  @apply mb-12 text-5xl font-bold;
+}
+
+.pageHeading {
+  @apply text-xl font-semibold text-cool-gray-800 mb-8;
+}
+
+.sectionHeading {
+  @apply text-2xl font-bold text-cool-gray-800;
+}

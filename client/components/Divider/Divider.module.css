@@ -1,0 +1,11 @@
+.root {
+  @apply my-6;
+}
+
+.relative {
+  @apply relative;
+}
+
+.divider {
+  @apply w-full border-t border-gray-300;
+}

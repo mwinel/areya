@@ -1,0 +1,47 @@
+.root {
+  @apply my-1 inline-flex items-center justify-center w-full py-2 font-semibold text-center transition duration-200 ease-in-out rounded-md shadow-sm cursor-pointer
+}
+
+.primary {
+  @apply text-white bg-indigo-600
+}
+
+.primary:hover {
+  @apply cursor-pointer bg-indigo-700
+}
+
+.primary:focus {
+  @apply ring outline-none
+}
+
+.primary:disabled {
+  @apply bg-indigo-500 cursor-not-allowed
+}
+
+.secondary {
+  @apply text-gray-700 bg-white border border-gray-300  text-cool-gray-700
+}
+
+.secondary:hover {
+  @apply bg-gray-50
+}
+
+.secondary:focus {
+  @apply ring outline-none
+}
+
+.danger {
+  @apply text-cool-gray-50 bg-red-600
+}
+
+.danger:hover {
+  @apply text-cool-gray-50 bg-red-700
+}
+
+.danger:focus {
+  @apply ring outline-none
+}
+
+.danger:disabled {
+  @apply bg-red-500 cursor-not-allowed
+}
