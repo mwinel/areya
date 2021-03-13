@@ -57,7 +57,7 @@ router.post(
       jwt: userJwt,
     };
 
-    res.status(201).send(user);
+    res.status(201).send({ data: user, message: "user successfully created." });
   }
 );
 
