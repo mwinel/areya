@@ -1,7 +1,0 @@
-.root {
-  @apply w-full px-3 py-2 transition duration-150 ease-in-out border rounded appearance-none bg-primary border-accents-4 text-accents-9;
-}
-
-.root:focus {
-  @apply border outline-none shadow-outline-blue;
-}
