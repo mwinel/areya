@@ -1,10 +1,10 @@
 import { FC } from "react";
 import Link from "next/link";
-import s from "./Nav.module.css";
 import Logo from "../Logo";
 import Search from "../Search";
 import ProfileDropdown from "../ProfileDropdown";
 import NavLink from "../NavLink";
+import s from "./Nav.module.css";
 
 interface NavProps {}
 
@@ -15,7 +15,7 @@ const Nav: FC<NavProps> = () => {
         <div className="max-w-7xl mx-auto px-2 sm:px-4 lg:px-8">
           <div className="relative flex items-center justify-between h-16">
             {/* Logo section */}
-            <Logo />
+            <Logo className="text-indigo-100" />
             {/* Search section */}
             <Search />
 

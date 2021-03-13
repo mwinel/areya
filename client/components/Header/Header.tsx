@@ -1,6 +1,6 @@
 import { FC, useState } from "react";
 import Link from "next/link";
-import { Transition } from "@headlessui/react";
+import Logo from "../Logo";
 import s from "./Header.module.css";
 
 interface HeaderProps {}
@@ -13,14 +13,7 @@ const Header: FC<HeaderProps> = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6">
         <div className="flex justify-between items-center border-b-2 border-gray-100 py-6 md:justify-start md:space-x-10">
           <div className="flex justify-start lg:w-0 lg:flex-1">
-            <a href="/">
-              <span className="sr-only">Workflow</span>
-              <img
-                className="h-8 w-auto sm:h-10"
-                src="https://tailwindui.com/img/logos/workflow-mark-indigo-600.svg"
-                alt=""
-              />
-            </a>
+            <Logo className="text-indigo-600"/>
           </div>
           <div className="-mr-2 -my-2 md:hidden">
             <button

@@ -18,7 +18,7 @@ const Home = () => {
         <h1 className="text-6xl text-gray-800 font-bold">
           Welcome to{" "}
           <a
-            href="https://nextjs.org"
+            href="/"
             className="text-6xl text-indigo-600 font-bold"
           >
             Areya!

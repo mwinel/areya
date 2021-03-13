@@ -1,19 +1,22 @@
 import { FC } from "react";
+import Link from "next/link";
+import cn from "classnames";
 import s from "./Logo.module.css";
 
-interface LogoProps {}
+interface LogoProps {
+  className?: any;
+}
 
-const Logo: FC<LogoProps> = ({}) => {
+const Logo: FC<LogoProps> = ({ className }) => {
+  const rootClassName = cn(s.root, className);
+
   return (
-    <div className="flex items-center px-2 lg:px-0 xl:w-64">
-      <div className="flex-shrink-0">
-        <img
-          className="h-8 w-auto"
-          src="https://tailwindui.com/img/logos/workflow-mark-indigo-300.svg"
-          alt="Workflow"
-        />
+    <Link href="/">
+      <div>
+        <span className="sr-only">areya</span>
+        <a className={rootClassName}>areya .:</a>
       </div>
-    </div>
+    </Link>
   );
 };
 
