@@ -1,0 +1,11 @@
+.root {
+  @apply w-full px-3 py-2 transition duration-150 ease-in-out rounded border-gray-300 appearance-none
+}
+
+.root:focus {
+  @apply outline-none border-indigo-50
+}
+
+.span {
+  @apply text-xs text-indigo-600 cursor-pointer
+}

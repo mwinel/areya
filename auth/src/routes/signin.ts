@@ -50,7 +50,9 @@ router.post(
       jwt: userJwt,
     };
 
-    res.status(200).send(existingUser);
+    res
+      .status(200)
+      .send({ data: existingUser, message: "user loggedin successfully." });
   }
 );
 

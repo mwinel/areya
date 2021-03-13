@@ -7,11 +7,17 @@ deploy:
 build:
   local:
     push: false
-  # googleCloudBuild:
-  #   projectId: areya-dev-289418
   artifacts:
     - image: mwinel/auth
       context: auth
+      docker:
+        dockerfile: Dockerfile.dev
+      sync:
+        manual:
+          - src: 'src/**/*.ts'
+            dest: .
+    - image: mwinel/hospitals
+      context: hospitals
       docker:
         dockerfile: Dockerfile
       sync:
@@ -21,16 +27,14 @@ build:
     - image: mwinel/client
       context: client
       docker:
-        dockerfile: Dockerfile
+        dockerfile: Dockerfile.dev
       sync:
         manual:
           - src: '**/*.ts'
             dest: .
-    - image: mwinel/hospitals
-      context: hospitals
-      docker:
-        dockerfile: Dockerfile
-      sync:
-        manual:
-          - src: 'src/**/*.ts'
+          - src: '**/*.js'
+            dest: .
+          - src: "**/*.tsx"
+            dest: .
+          - src: "**/*.css"
             dest: .

@@ -1,0 +1,4 @@
+.avatar {
+  @apply h-8 w-8 rounded-full rounded-full bg-indigo-100 text-indigo-300 cursor-pointer
+}
+

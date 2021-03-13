@@ -1,0 +1,3 @@
+.root {
+  @apply block my-2 text-sm font-medium text-gray-700;
+}
