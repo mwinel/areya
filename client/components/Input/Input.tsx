@@ -8,6 +8,7 @@ interface InputProps {
   placeholder?: string;
   type?: string;
   onChange?: (...args: any[]) => any;
+  autoComplete?: any;
 }
 
 const Input: FC<InputProps> = (props) => {
@@ -18,6 +19,7 @@ const Input: FC<InputProps> = (props) => {
     type,
     children,
     onChange,
+    autoComplete,
     ...rest
   } = props;
 

@@ -1,14 +1,30 @@
 import { FC } from "react";
+import { useRouter } from "next/router";
 import Link from "next/link";
+
 import Logo from "../Logo";
 import Search from "../Search";
 import ProfileDropdown from "../ProfileDropdown";
 import NavLink from "../NavLink";
 import s from "./Nav.module.css";
+import useRequest from "../../hooks/useRequest";
 
 interface NavProps {}
 
 const Nav: FC<NavProps> = () => {
+  const router = useRouter();
+
+  const { doRequest } = useRequest({
+    url: "/api/v1/auth/signout",
+    method: "post",
+    body: {},
+    onSuccess: () => router.push("/"),
+  });
+
+  const handleSignOut = async () => {
+    await doRequest();
+  };
+
   return (
     <>
       <nav className="flex-shrink-0 bg-indigo-600">
@@ -122,6 +138,7 @@ const Nav: FC<NavProps> = () => {
               <a
                 href="/"
                 className="mt-1 block px-3 py-2 rounded-md text-base font-medium text-indigo-200 hover:text-indigo-100 hover:bg-indigo-600"
+                onClick={() => handleSignOut()}
               >
                 Sign out
               </a>

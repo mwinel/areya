@@ -1,4 +1,4 @@
-import { Layout } from "../../Layout";
+import { Layout } from "../../layout";
 import { SidebarLeft, MainWrapper, SidebarRight } from "../../components";
 
 const Dashboard = () => {

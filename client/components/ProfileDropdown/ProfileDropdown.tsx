@@ -1,12 +1,28 @@
 import { FC, useState } from "react";
+import { useRouter } from "next/router";
 import { Transition } from "@headlessui/react";
+
 import s from "./ProfileDropdown.module.css";
 import Avatar from "../Avatar";
+import useRequest from "../../hooks/useRequest";
 
 interface ProfileDropdownProps {}
 
 const ProfileDropdown: FC<ProfileDropdownProps> = () => {
   const [isOpen, setIsOpen] = useState(false);
+
+  const router = useRouter();
+
+  const { doRequest } = useRequest({
+    url: "/api/v1/auth/signout",
+    method: "post",
+    body: {},
+    onSuccess: () => router.push("/"),
+  });
+
+  const handleSignOut = async () => {
+    await doRequest();
+  };
 
   return (
     <div className="ml-4 relative flex-shrink-0">
@@ -52,6 +68,7 @@ const ProfileDropdown: FC<ProfileDropdownProps> = () => {
             href="/"
             className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
             role="menuitem"
+            onClick={() => handleSignOut()}
           >
             Logout
           </a>

@@ -2,7 +2,7 @@ import { FC, useState, useCallback, SyntheticEvent } from "react";
 import { useRouter } from "next/router";
 import Link from "next/link";
 
-// import useRequest from "../../hooks/useRequest";
+import useRequest from "../../hooks/useRequest";
 import { Button, Label, Input, Checkbox, Text } from "../../components";
 
 interface LoginProps {}
@@ -19,30 +19,24 @@ const Login: FC<LoginProps> = () => {
     [passwordShown, setPasswordShown]
   );
 
-  // const { doRequest, errors } = useRequest({
-  //   url: USER_Login_API_URL,
-  //   method: "post",
-  //   body: {
-  //     email,
-  //     password,
-  //   },
-  //   onSuccess: () => router.push('/dashboard'),
-  // });
+  const { doRequest, errors } = useRequest({
+    url: '/api/v1/auth/signin',
+    method: "post",
+    body: {
+      email,
+      password,
+    },
+    onSuccess: () => router.push('/dashboard'),
+  });
 
   const onSubmit = async (event: SyntheticEvent<EventTarget>) => {
     event.preventDefault();
-    // await doRequest();
-    console.log("hooray login");
+    await doRequest();
   };
 
   return (
     <div className="flex flex-col justify-center min-h-screen py-12 bg-gray-50 sm:px-6 lg:px-8">
       <div className="sm:mx-auto sm:w-full sm:max-w-md">
-        {/* <img
-          className="w-auto h-12 mx-auto"
-          src="/images/logo.webp"
-          alt="logo"
-        /> */}
         <div className="mb-2">
           <Text variant="sectionHeading" className="text-center">
             Login to your Account
@@ -60,7 +54,7 @@ const Login: FC<LoginProps> = () => {
 
       <div className="mt-6 sm:mx-auto sm:w-full sm:max-w-md">
         <div className="px-4 py-6 bg-white shadow sm:rounded-md sm:px-10">
-          {/* {errors} */}
+          {errors}
           <form onSubmit={onSubmit}>
             <div>
               <Label title="Email Address" />

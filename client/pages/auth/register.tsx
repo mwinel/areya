@@ -2,7 +2,7 @@ import { FC, useState, useCallback, SyntheticEvent } from "react";
 import { useRouter } from "next/router";
 import Link from "next/link";
 
-// import useRequest from "../../hooks/useRequest";
+import useRequest from "../../hooks/useRequest";
 import { Button, Label, Input, Checkbox, Text } from "../../components";
 
 interface RegisterProps {}
@@ -26,20 +26,22 @@ const Register: FC<RegisterProps> = () => {
     [passwordShown, setPasswordShown]
   );
 
-  // const { doRequest, errors } = useRequest({
-  //   url: USER_Register_API_URL,
-  //   method: "post",
-  //   body: {
-  //     email,
-  //     password,
-  //   },
-  //   onSuccess: () => router.push('/dashboard'),
-  // });
+  const { doRequest, errors } = useRequest({
+    url: "/api/v1/auth/signup",
+    method: "post",
+    body: {
+      firstName,
+      lastName,
+      email,
+      phoneNumber,
+      password,
+    },
+    onSuccess: () => router.push("/dashboard"),
+  });
 
   const onSubmit = async (event: SyntheticEvent<EventTarget>) => {
     event.preventDefault();
-    // await doRequest();
-    console.log("hooray");
+    await doRequest();
   };
 
   return (
@@ -62,7 +64,7 @@ const Register: FC<RegisterProps> = () => {
 
       <div className="mt-6 sm:mx-auto sm:w-full sm:max-w-md">
         <div className="px-4 py-6 bg-white shadow sm:rounded-md sm:px-10">
-          {/* {errors} */}
+          {errors}
           <form onSubmit={onSubmit}>
             <div>
               <Label title="First name" />
@@ -70,20 +72,21 @@ const Register: FC<RegisterProps> = () => {
                 name="firstName"
                 placeholder="First name"
                 type="text"
-                onChange={setEmail}
+                onChange={setFirstName}
               />
               <Label title="Last name" />
               <Input
                 name="lastName"
                 placeholder="Last name"
                 type="text"
-                onChange={setEmail}
+                onChange={setLastName}
               />
               <Label title="Email Address" />
               <Input
                 name="email"
                 placeholder="Enter your email address"
                 type="email"
+                autoComplete="email"
                 onChange={setEmail}
               />
               <Label title="Phone Number" />
@@ -91,7 +94,7 @@ const Register: FC<RegisterProps> = () => {
                 name="phoneNumber"
                 placeholder="256 705777000"
                 type="text"
-                onChange={setEmail}
+                onChange={setPhoneNumber}
               />
             </div>
             <div>
@@ -121,7 +124,7 @@ const Register: FC<RegisterProps> = () => {
                 <Text
                   variant="small"
                   className="pl-3 mt-1 text-indigo-500 cursor-pointer"
-                  onClick={() => router.push('/terms')}
+                  onClick={() => router.push("/terms")}
                 >
                   I agree to terms.
                 </Text>
