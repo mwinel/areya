@@ -16,6 +16,14 @@ build:
         manual:
           - src: 'src/**/*.ts'
             dest: .
+    - image: mwinel/hospitals
+      context: hospitals
+      docker:
+        dockerfile: Dockerfile
+      sync:
+        manual:
+          - src: 'src/**/*.ts'
+            dest: .
     - image: mwinel/client
       context: client
       docker:
@@ -24,11 +32,9 @@ build:
         manual:
           - src: '**/*.ts'
             dest: .
-    - image: mwinel/hospitals
-      context: hospitals
-      docker:
-        dockerfile: Dockerfile.dev
-      sync:
-        manual:
-          - src: 'src/**/*.ts'
+          - src: '**/*.js'
+            dest: .
+          - src: "**/*.tsx"
+            dest: .
+          - src: "**/*.css"
             dest: .
