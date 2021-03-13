@@ -19,7 +19,7 @@
 }
 
 .secondary {
-  @apply text-gray-700 bg-white border border-gray-300  text-cool-gray-700
+  @apply text-gray-700 bg-white border border-gray-300
 }
 
 .secondary:hover {
@@ -31,11 +31,11 @@
 }
 
 .danger {
-  @apply text-cool-gray-50 bg-red-600
+  @apply text-gray-100 bg-red-600
 }
 
 .danger:hover {
-  @apply text-cool-gray-50 bg-red-700
+  @apply text-gray-100 bg-red-700
 }
 
 .danger:focus {
