@@ -45,11 +45,6 @@ const Register: FC<RegisterProps> = () => {
   return (
     <div className="flex flex-col justify-center min-h-screen py-12 bg-gray-50 sm:px-6 lg:px-8">
       <div className="sm:mx-auto sm:w-full sm:max-w-md">
-        {/* <img
-          className="w-auto h-12 mx-auto"
-          src="/images/logo.webp"
-          alt="logo"
-        /> */}
         <div className="mb-2">
           <Text variant="sectionHeading" className="text-center">
             Create your Account
