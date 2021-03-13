@@ -41,6 +41,7 @@ router.post(
     await user.save();
 
     // Generate JWT.
+    // TODO: typecast the JWT Payload.
     const userJwt = jwt.sign(
       {
         id: user.id,
