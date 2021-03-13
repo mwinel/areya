@@ -3,7 +3,7 @@
 }
 
 .small {
-  @apply max-w-6xl mx-auto text-sm;
+  @apply max-w-6xl mx-auto text-xs;
 }
 
 
@@ -12,9 +12,9 @@
 }
 
 .pageHeading {
-  @apply text-xl font-semibold text-cool-gray-800 mb-8;
+  @apply text-xl font-semibold text-gray-800 mb-8;
 }
 
 .sectionHeading {
-  @apply text-2xl font-bold text-cool-gray-800;
+  @apply text-2xl font-bold text-gray-800;
 }
