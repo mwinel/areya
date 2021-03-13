@@ -8,9 +8,11 @@ it("returns a 404 if a hospital is not found.", async () => {
 });
 
 it("returns a 200 if a hospital is found.", async () => {
+  const cookie = await global.signin();
+
   const response = await request(app)
     .post("/api/v1/hospitals")
-    .set("Cookie", global.signin())
+    .set("Cookie", cookie)
     .send({
       hospitalName: "test hospital name",
       location: "test location",
@@ -25,10 +27,11 @@ it("returns a 200 if a hospital is found.", async () => {
     .expect(201);
 
   const hospitalResponse = await request(app)
-    .get(`/api/v1/hospitals/${response.body.id}`)
+    .get(`/api/v1/hospitals/${response.body.data.id}`)
+    .set("Cookie", cookie)
     .send()
     .expect(200);
 
-  expect(hospitalResponse.body.hospitalName).toEqual("test hospital name");
-  expect(hospitalResponse.body.location).toEqual("test location");
+  expect(hospitalResponse.body.data.hospitalName).toEqual("test hospital name");
+  expect(hospitalResponse.body.data.location).toEqual("test location");
 });

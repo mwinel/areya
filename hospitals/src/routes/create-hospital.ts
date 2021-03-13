@@ -1,6 +1,6 @@
 import express, { Request, Response } from "express";
 import { body } from "express-validator";
-import { requireAuth, validateRequest } from "@areya/common";
+import { currentUser, requireAuth, validateRequest } from "@areya/common";
 
 import { Hospital } from "../models/hospital";
 
@@ -8,8 +8,37 @@ const router = express.Router();
 
 router.post(
   "/api/v1/hospitals",
+  currentUser,
   requireAuth,
-  [body("hospitalName").not().isEmpty().withMessage("Hospital name is required.")],
+  [
+    body("hospitalName")
+      .not()
+      .isEmpty()
+      .withMessage("Hospital name is required."),
+    body("location").not().isEmpty().withMessage("Hospital location is required."),
+    body("hospitalType")
+      .not()
+      .isEmpty()
+      .withMessage("Hospital type is required."),
+    body("size").not().isEmpty().withMessage("Hospital size is required."),
+    body("beds").not().isEmpty().withMessage("Number of beds is required."),
+    body("phoneNumber")
+      .not()
+      .isEmpty()
+      .withMessage("Contact phone number is required."),
+    body("emergencyHotline")
+      .not()
+      .isEmpty()
+      .withMessage("Emergency hotline is required."),
+    body("contactPerson")
+      .not()
+      .isEmpty()
+      .withMessage("Contact person is required."),
+    body("description")
+      .not()
+      .isEmpty()
+      .withMessage("Hospital description is required."),
+  ],
   validateRequest,
 
   async (req: Request, res: Response) => {
@@ -35,13 +64,12 @@ router.post(
       emergencyHotline,
       contactPerson,
       description,
-      // userId: req.currentUser!.id,
-      userId: "1",
+      userId: req.currentUser!.id,
     });
 
     await hospital.save();
 
-    res.status(201).send(hospital);
+    res.status(201).send({ data: hospital });
   }
 );
 
