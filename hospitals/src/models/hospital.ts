@@ -1,4 +1,5 @@
 import mongoose from "mongoose";
+import { updateIfCurrentPlugin } from "mongoose-update-if-current";
 
 // An interface that describes properties required to create a new Hospital.
 interface HospitalAttrs {
@@ -86,6 +87,9 @@ const hospitalSchema = new mongoose.Schema(
     },
   }
 );
+
+hospitalSchema.set("versionKey", "version");
+hospitalSchema.plugin(updateIfCurrentPlugin);
 
 hospitalSchema.statics.build = (attrs: HospitalAttrs) => {
   return new Hospital(attrs);
