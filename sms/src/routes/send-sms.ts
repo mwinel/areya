@@ -1,4 +1,5 @@
 import express, { Request, Response } from "express";
+// import { twiml } from "twilio";
 import _ from "underscore";
 import { findByLocation, findById } from "../services/hospital-finder";
 import {
@@ -10,10 +11,13 @@ import {
 require("dotenv").config();
 
 const router = express.Router();
+// const MessagingResponse = require("twilio").twiml.MessagingResponse;
 
-router.post("/api/v1/search", async (req: Request, res: Response) => {
+// const { MessagingResponse } = twiml;
+
+router.post("/messages", async (req: Request, res: Response) => {
   const body = req.body.Body;
-  res.type("text/xml");
+  // res.type("text/xml");
 
   if (req.cookies.cachedHospitals !== undefined && !isNaN(body)) {
     const cachedHospitals = req.cookies.cachedHospitals;
@@ -22,7 +26,6 @@ router.post("/api/v1/search", async (req: Request, res: Response) => {
       res.send(notFound().toString());
     } else {
       findById(hospitalId, (err: any, hospital: any) => {
-        console.log(hospitalId);
         res.clearCookie("cachedHospitals");
         res.send(singleHospital(hospital).toString());
       });
@@ -49,27 +52,10 @@ router.post("/api/v1/search", async (req: Request, res: Response) => {
         res.cookie("cachedHospitals", cachedHospitals, {
           maxAge: 1000 * 60 * 60,
         });
-        console.log(req.cookies);
         res.send(multipleHospitals(options).toString());
       }
     });
   }
-
-  // const smsCount = req.session!.counter || 0;
-
-  // let message = "Type your location to find a nearby medical facility.";
-
-  // if (smsCount > 0) {
-  //   message = "Hello, thanks for message number " + (smsCount + 1);
-  // }
-
-  // req.session!.counter = smsCount + 1;
-
-  // const twiml = new MessagingResponse();
-  // twiml.message(message);
-
-  // res.writeHead(200, { "Content-Type": "text/xml" });
-  // res.end(twiml.toString());
 });
 
 export { router as sendSMSRouter };
