@@ -1,11 +1,12 @@
 import { FC, useState } from "react";
 import { Transition } from "@headlessui/react";
+
 import s from "./MainWrapper.module.css";
 import ListItem from "../ListItem";
 
 interface MainWrapperProps {}
 
-const MainWrapper: FC<MainWrapperProps> = () => {
+const MainWrapper: FC<MainWrapperProps> = ({children}) => {
   const [isOpen, setIsOpen] = useState(false);
 
   return (
@@ -99,20 +100,19 @@ const MainWrapper: FC<MainWrapperProps> = () => {
           </div>
         </div>
       </div>
-      <ListItem
-        hospitalName="Nakasero Hospital"
-        location="Plot 24 Nakasero, Kampala"
-        hospitalType="Private"
-        phoneNumber="0312 435345"
-        emergencyHotline="0800 211232"
-      />
-      <ListItem
-        hospitalName="International Hospital Kampala"
-        location="Plot 244 Ternan Avenue Kololo, Kampala"
-        hospitalType="Private"
-        phoneNumber="0312 405345"
-        emergencyHotline="0800 222232"
-      />
+
+      {children}
+
+      {/* {h.map((hospital, index) => {
+        <ListItem
+          hospitalName={hospital.hospitalName}
+          location={hospital.location}
+          hospitalType={hospital.hospitalType}
+          phoneNumber={hospital.phoneNumber}
+          emergencyHotline={hospital.emergencyHotline}
+        />;
+      })}
+      <div>hahaha</div> */}
     </div>
   );
 };

@@ -19,11 +19,13 @@ const MyApp = ({ Component, pageProps, currentUser }) => {
   let isSignup = useIsSignup();
   let isSignin = useIsSignin();
 
+  console.log('current user', currentUser)
+
   if (isSignup || isSignin) {
     return <Component {...pageProps} />;
   }
 
-  return <Component {...pageProps} />;
+  return <Component currentUser={currentUser} {...pageProps} />;
 };
 
 // Disable the ability to perform automatic static optimization,
@@ -31,6 +33,8 @@ const MyApp = ({ Component, pageProps, currentUser }) => {
 MyApp.getInitialProps = async (appContext: any) => {
   const client = buildClient(appContext.ctx);
   const { data } = await client.get("/api/v1/auth/currentuser");
+
+  console.log('current user data', data)
 
   let pageProps = {};
   if (appContext.Component.getInitialProps) {

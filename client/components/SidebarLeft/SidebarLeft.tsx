@@ -5,7 +5,8 @@ import Button from "../Button";
 
 interface SidebarLeftProps {}
 
-const SidebarLeft: FC<SidebarLeftProps> = () => {
+const SidebarLeft: FC<SidebarLeftProps> = ({currentUser}) => {
+  console.log(currentUser)
   return (
     <div className="xl:flex-shrink-0 xl:w-64 xl:border-r xl:border-gray-200 bg-white">
       <div className="pl-4 pr-6 py-6 sm:pl-6 lg:pl-8 xl:pl-0">
